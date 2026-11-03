@@ -1,6 +1,6 @@
 'use client';
 import {useState} from 'react';
-const email=(process.env.NEXT_PUBLIC_CONTACT_EMAIL||'bakerdaniel379@gmail.com').trim();
+const email='bakerdaniel379@gmail.com';
 export default function FlyerInquiry(){
  const [business,setBusiness]=useState(''),[contact,setContact]=useState(''),[reply,setReply]=useState(''),[type,setType]=useState('Angebot / Rabattaktion'),[details,setDetails]=useState(''),[consent,setConsent]=useState(false);
  function send(e:React.FormEvent<HTMLFormElement>){e.preventDefault();if(!email||!consent)return;const subject='VYN Business Hub: Kostenlosen Testflyer anfragen';const body=['Guten Tag,','ich möchte einen kostenlosen, unverbindlichen Testflyer anfragen.','','Geschäft: '+business,'Ansprechperson: '+contact,'Antwort-E-Mail: '+reply,'Flyer-Art: '+type,'Wünsche: '+(details||'Keine weiteren Angaben'),'','Ich bitte um Rückmeldung zu meiner Anfrage.'].join('\n');window.location.href='mailto:'+email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)}
